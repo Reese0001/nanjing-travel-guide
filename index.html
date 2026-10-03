@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>南京3天劳动节旅行攻略 | 2026.5.1-5.3</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --neon-cyan: #00f0ff;
+            --neon-pink: #ff00e5;
+            --neon-purple: #a855f7;
+            --neon-blue: #3b82f6;
+            --bg-dark: #0a0e1a;
+            --bg-card: #131829;
+            --bg-card-hover: #1a2138;
+            --text-primary: #e4e7ff;
+            --text-secondary: #8b92b8;
+            --border-glow: rgba(0, 240, 255, 0.3);
+        }
+
+        body {
+            font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            background-image:
+                radial-gradient(ellipse at top left, rgba(168, 85, 247, 0.15), transparent 50%),
+                radial-gradient(ellipse at bottom right, rgba(0, 240, 255, 0.1), transparent 50%);
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+        /* 赛博朋克标题栏 */
+        .header {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(0, 240, 255, 0.15));
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            padding: 40px 30px;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(0, 240, 255, 0.15), inset 0 0 30px rgba(168, 85, 247, 0.1);
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.1), transparent);
+            animation: scan 4s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-pink), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .header .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1em;
+            letter-spacing: 1px;
+        }
+
+        .header .date-badge {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 24px;
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid var(--neon-cyan);
+            border-radius: 30px;
+            color: var(--neon-cyan);
+            font-size: 0.95em;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+        }
+
+        /* 区域标题 */
+        .section-title {
+            font-size: 1.6em;
+            font-weight: 700;
+            margin: 35px 0 20px;
+            padding-left: 15px;
+            border-left: 4px solid var(--neon-cyan);
+            color: var(--text-primary);
+        }
+
+        .section-title .icon { margin-right: 10px; }
+
+        /* 天气卡片 */
+        .weather-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .weather-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .weather-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.2);
+        }
+
+        .weather-card .day-label {
+            font-size: 0.85em;
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+        }
+
+        .weather-card .date {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: var(--neon-cyan);
+            margin-bottom: 15px;
+        }
+
+        .weather-card .weather-icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .weather-card .temp {
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .weather-card .temp .high { color: var(--neon-pink); }
+        .weather-card .temp .low { color: var(--neon-cyan); }
+        .weather-card .temp .sep { color: var(--text-secondary); margin: 0 8px; }
+
+        .weather-card .weather-desc {
+            color: var(--text-secondary);
+            font-size: 0.95em;
+            margin-bottom: 8px;
+        }
+
+        .weather-card .wind {
+            color: var(--text-secondary);
+            font-size: 0.85em;
+        }
+
+        /* 旅行小贴士 */
+        .tips-bar {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(255, 0, 229, 0.1));
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 12px;
+            padding: 15px 25px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tips-bar .tip-icon { font-size: 1.5em; }
+        .tips-bar .tip-text { color: var(--text-primary); font-size: 0.95em; }
+        .tips-bar .tip-text strong { color: var(--neon-cyan); }
+
+        /* 行程卡片 */
+        .day-section {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .day-section:hover {
+            border-color: rgba(0, 240, 255, 0.2);
+            box-shadow: 0 5px 25px rgba(0, 240, 255, 0.1);
+        }
+
+        .day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .day-title {
+            font-size: 1.5em;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .day-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .day-badge.d1 { background: rgba(0, 240, 255, 0.15); color: var(--neon-cyan); border: 1px solid var(--neon-cyan); }
+        .day-badge.d2 { background: rgba(168, 85, 247, 0.15); color: var(--neon-purple); border: 1px solid var(--neon-purple); }
+        .day-badge.d3 { background: rgba(255, 0, 229, 0.15); color: var(--neon-pink); border: 1px solid var(--neon-pink); }
+
+        .day-theme {
+            color: var(--text-secondary);
+            font-size: 1em;
+            font-weight: 500;
+        }
+
+        /* 景点卡片网格 */
+        .spots-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .spot-card {
+            background: var(--bg-card-hover);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .spot-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 10px 25px rgba(0, 240, 255, 0.15);
+        }
+
+        .spot-card .spot-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background: var(--bg-dark);
+            display: block;
+        }
+
+        .spot-card .spot-info { padding: 18px; }
+
+        .spot-card .spot-number {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+            color: var(--bg-dark);
+            font-weight: 700;
+            font-size: 0.85em;
+            margin-bottom: 10px;
+        }
+
+        .spot-card .spot-name {
+            font-size: 1.15em;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .spot-card .spot-address {
+            color: var(--text-secondary);
+            font-size: 0.85em;
+            margin-bottom: 12px;
+        }
+
+        .spot-card .spot-desc {
+            color: var(--text-secondary);
+            font-size: 0.88em;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .spot-card .spot-time {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--neon-cyan);
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .spot-card .spot-map-link {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 5px 12px;
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            border-radius: 6px;
+            color: var(--neon-cyan);
+            text-decoration: none;
+            font-size: 0.82em;
+            transition: all 0.2s;
+        }
+
+        .spot-card .spot-map-link:hover {
+            background: rgba(0, 240, 255, 0.2);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+        }
+
+        /* 打车路线信息 */
+        .taxi-routes {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 18px;
+            margin-top: 5px;
+        }
+
+        .taxi-routes .taxi-title {
+            color: var(--neon-pink);
+            font-size: 0.95em;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .taxi-route {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.88em;
+            color: var(--text-secondary);
+        }
+
+        .taxi-route:last-child { border-bottom: none; }
+
+        .taxi-route .route-arrow { color: var(--neon-cyan); }
+        .taxi-route .route-distance { color: var(--neon-cyan); font-weight: 600; }
+        .taxi-route .route-duration { color: var(--neon-purple); font-weight: 600; }
+        .taxi-route .route-fare { color: var(--neon-pink); font-size: 0.85em; }
+
+        /* 地图区域 */
+        .map-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.1);
+        }
+
+        .map-section h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .map-section .map-desc {
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            font-size: 0.95em;
+        }
+
+        .amap-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-blue));
+            color: var(--bg-dark);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 240, 255, 0.4);
+            margin: 10px;
+        }
+
+        .amap-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 240, 255, 0.6);
+        }
+
+        .amap-button.purple {
+            background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
+            box-shadow: 0 5px 20px rgba(168, 85, 247, 0.4);
+        }
+
+        .amap-button.purple:hover {
+            box-shadow: 0 8px 30px rgba(168, 85, 247, 0.6);
+        }
+
+        /* SVG路线图 */
+        .route-svg {
+            width: 100%;
+            max-width: 900px;
+            margin: 20px auto;
+            display: block;
+        }
+
+        .route-svg text { fill: var(--text-secondary); font-size: 12px; }
+        .route-svg .day1-line { stroke: var(--neon-cyan); }
+        .route-svg .day2-line { stroke: var(--neon-purple); }
+        .route-svg .day3-line { stroke: var(--neon-pink); }
+        .route-svg .day1-dot { fill: var(--neon-cyan); }
+        .route-svg .day2-dot { fill: var(--neon-purple); }
+        .route-svg .day3-dot { fill: var(--neon-pink); }
+
+        .map-legend {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .legend-dot.d1 { background: var(--neon-cyan); box-shadow: 0 0 8px var(--neon-cyan); }
+        .legend-dot.d2 { background: var(--neon-purple); box-shadow: 0 0 8px var(--neon-purple); }
+        .legend-dot.d3 { background: var(--neon-pink); box-shadow: 0 0 8px var(--neon-pink); }
+
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-secondary);
+            font-size: 0.85em;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 30px;
+        }
+
+        .footer .footer-highlight { color: var(--neon-cyan); }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .weather-grid, .spots-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 1.8em; }
+            .day-section { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 标题栏 -->
+        <div class="header">
+            <h1>南京 3 天劳动节旅行攻略</h1>
+            <p class="subtitle">钟山风雨 · 秦淮灯影 · 六朝金粉</p>
+            <div class="date-badge">2026年5月1日 - 5月3日 | 共3天9景点</div>
+        </div>
+
+        <!-- 天气卡片 -->
+        <h2 class="section-title"><span class="icon">🌤️</span>南京三日天气预报</h2>
+        <div class="weather-grid">
+            <div class="weather-card">
+                <div class="day-label">第一天</div>
+                <div class="date">5月1日 周五</div>
+                <span class="weather-icon">☀️</span>
+                <div class="temp"><span class="high">26°</span><span class="sep">/</span><span class="low">18°</span></div>
+                <div class="weather-desc">晴朗 · 适宜出行</div>
+                <div class="wind">🌬️ 东南风 1-3级</div>
+            </div>
+            <div class="weather-card">
+                <div class="day-label">第二天</div>
+                <div class="date">5月2日 周六</div>
+                <span class="weather-icon">⛅</span>
+                <div class="temp"><span class="high">27°</span><span class="sep">/</span><span class="low">19°</span></div>
+                <div class="weather-desc">多云 · 温暖舒适</div>
+                <div class="wind">🌬️ 南风 1-3级</div>
+            </div>
+            <div class="weather-card">
+                <div class="day-label">第三天</div>
+                <div class="date">5月3日 周日</div>
+                <span class="weather-icon">🌥️</span>
+                <div class="temp"><span class="high">24°</span><span class="sep">/</span><span class="low">17°</span></div>
+                <div class="weather-desc">阴转多云 · 建议带伞</div>
+                <div class="wind">🌬️ 东风 1-3级</div>
+            </div>
+        </div>
+
+        <!-- 旅行小贴士 -->
+        <div class="tips-bar">
+            <span class="tip-icon">💡</span>
+            <span class="tip-text"><strong>出行贴士：</strong>5月南京气温宜人(17-27°C)，建议穿薄长袖+外套。景点间<strong>打车出行</strong>，假期人流较大请提前预约门票。带好防晒霜、充电宝和舒适步行鞋。</span>
+        </div>
+
+        <!-- Day 1 行程 -->
+        <div class="day-section">
+            <div class="day-header">
+                <div class="day-title">
+                    <span class="day-badge d1">Day 1</span>
+                    <span>5月1日 · 钟山风光线</span>
+                </div>
+                <span class="day-theme">🌿 紫金山名胜古迹之旅</span>
+            </div>
+            <div class="spots-grid">
+                <div class="spot-card">
+                    <img class="spot-image" src="http://store.is.autonavi.com/showpic/46bf800a21c42453ff756fc2b77c710f" alt="中山陵景区" onerror="this.style.background='linear-gradient(135deg,#00f0ff,#a855f7)';this.alt='中山陵'">
+                    <div class="spot-info">
+                        <span class="spot-number">1</span>
+                        <div class="spot-name">中山陵景区</div>
+                        <div class="spot-address">📍 石象路7号 · 玄武区</div>
+                        <div class="spot-desc">孙中山先生陵寝，依山而建，气势恢宏。392级台阶拾级而上，俯瞰南京城。</div>
+                        <div class="spot-time">⏰ 建议游览 2-3小时</div>
+                        <a class="spot-map-link" href="https://uri.amap.com/marker?position=118.852269,32.053448&name=中山陵景区&src=travelGuide" target="_blank">🗺️ 查看位置</a>
+                    </div>
+                </div>
+                <div class="spot-card">
+                    <img class="spot-image" src="http://store.is.autonavi.com/showpic/a9d8eb4d58561ffda8bb4ff08c8a4d2c" alt="明孝陵景区" onerror="this.style.background='linear-gradient(135deg,#00f0ff,#a855f7)';this.alt='明孝陵'">
+                    <div class="spot-info">
+                        <span class="spot-number">2</span>
+                        <div class="spot-name">明孝陵景区</div>
+                        <div class="spot-address">📍 石象路7号 · 玄武区</div>
+                        <div class="spot-desc">明太祖朱元璋陵墓，神道石刻精美，梅花山春色满园，世界文化遗产。</div>
+                        <div class="spot-time">⏰ 建议游览 2小时</div>
+                        <a class="spot-map-link" href="https://uri.amap.com/marker?position=118.840463,32.051926&name=明孝陵景区&src=travelGuide" target="_blank">🗺️ 查看位置</a>
+                    </div>
+                </div>
+                <div class="spot-card">
+                    <img class="spot-image" src="http://store.is.autonavi.com/showpic/8fd02cf1c04a8a5a91e32a5354d7a023" alt="南京夫子庙" onerror="this.style.background='linear-gradient(135deg,#00f0ff,#a855f7)';this.alt='夫子庙'">
+                    <div class="spot-info">
+                        <span class="spot-number">3</span>
+                        <div class="spot-name">南京夫子庙</div>
+                        <div class="spot-address">📍 贡院街152号 · 秦淮区</div>
+                        <div class="spot-desc">秦淮风光带核心，孔庙建筑群，夜游秦淮河画舫，品尝金陵小吃。</div>
+                        <div class="spot-time">⏰ 建议游览 2-3小时</div>
+                        <a class="spot-map-link" href="https://uri.amap.com/marker?position=118.790958,32.020935&name=南京夫子庙&src=travelGuide" target="_blank">🗺️ 查看位置</a>
+                    </div>
+                </div>
+            </div>
+            <div class="taxi-routes">
+                <div class="taxi-title">🚕 打车路线规划（同日景点间）</div>
+                <div class="taxi-route">
+                    <span>中山陵</span><span class="route-arrow">→</span><span>明孝陵</span>
+                    <span class="route-distance">3.4 km</span>
+                    <span class="route-duration">约21分钟</span>
+                    <span class="route-fare">约¥12</span>
+                </div>
+                <div class="taxi-route">
+                    <span>明孝陵</span><span class="route-arrow">→</span><span>夫子庙</span>
+                    <span class="route-distance">9.6 km</span>
+                    <span class="route-duration">约45分钟</span>
+                    <span class="route-fare">约¥28</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 2 行程 -->
+        <div class="day-section">
+            <div class="day-header">
+                <div class="day-title">
+                    <span class="day-badge d2">Day 2</span>
+                    <span>5月2日 · 人文历史线</span>
+                </div>
+                <span class="day-theme">🏛️ 民国风云与湖光山色</span>
+            </div>
+            <div class="spots-grid">
+                <div class="spot-card">
+                    <img class="spot-image" src="http://aos-cdn-image.amap.com/sns/ugccomment/21acde57-d540-4737-974a-11b6c69d23de.jpg" alt="总统府" onerror="this.style.background='linear-gradient(135deg,#a855f7,#ff00e5)';this.alt='总统府'">
+                    <div class="spot-info">
+                        <span class="spot-number">1</span>
+                        <div class="spot-name">总统府</div>
+                        <div class="spot-address">📍 长江路292号 · 玄武区</div>
+                        <div class="spot-desc">中国近代史遗址博物馆，太平天国天王府旧址，民国建筑群与煦园园林。</div>
+                        <div class="spot-time">⏰ 建议游览 2-3小时</div>
+                        <a class="spot-map-link" href="https://uri.amap.com/marker?position=118.796951,32.042732&name=总统府&src=travelGuide" target="_blank">🗺️ 查看位置</a>
+                    </div>
+                </div>
+                <div class="spot-card">
+                    <img class="spot-image" src="http://store.is.autonavi.com/showpic/ff2f4114639e0110ae96ae76ad0c0287" alt="玄武湖景区" onerror="this.style.background='linear-gradient(135deg,#a855f7,#ff00e5)';this.alt='玄武湖'">
+                    <div class="spot-info">
+                        <span class="spot-number">2</span>
+                        <div class="spot-name">玄武湖景区</div>
+                        <div class="spot-address">📍 玄武门路1号 · 玄武区</div>
+                        <div class="spot-desc">江南最大城内公园，五洲风光秀丽，环湖漫步，远眺明城墙与紫金山。</div>
+                        <div class="spot-time">⏰ 建议游览 2小时</div>
+                        <a class="spot-map-link" href="https://uri.amap.com/marker?position=118.812688,32.069455&name=玄武湖景区&src=travelGuide" target="_blank">🗺️ 查看位置</a>
+                    </div>
+                </div>
+                <div class="spot-card">
+                    <img class="spot-image" src="http://store.is.autonavi.com/showpic/6d9679442d9f514b78d55213b43d9417" alt="南京博物院" onerror="this.style.background='linear-gradient(135deg,#a855f7,#ff00e5)';this.alt='南京博物院'">
+                    <div class="spot-info">
+                        <span class="spot-number">3</span>
+                        <div class="spot-name">南京博物院</div>
+                        <div class="spot-address">📍 中山东路321号 · 玄武区</div>
+                        <div class="spot-desc">中国三大博物馆之一，馆藏丰富，民国馆沉浸式体验，一院六馆格局。</div>
+                        <div class="spot-time">⏰ 建议游览 3小时</div>
+                        <a class="spot-map-link" href="https://uri.amap.com/marker?position=118.825064,32.040802&name=南京博物院&src=travelGuide" target="_blank">🗺️ 查看位置</a>
+                    </div>
+                </div>
+            </div>
+            <div class="taxi-routes">
+                <div class="taxi-title">🚕 打车路线规划（同日景点间）</div>
+                <div class="taxi-route">
+                    <span>总统府</span><span class="route-arrow">→</span><span>玄武湖</span>
+                    <span class="route-distance">4.9 km</span>
+                    <span class="route-duration">约24分钟</span>
+                    <span class="route-fare">约¥16</span>
+                </div>
+                <div class="taxi-route">
+                    <span>玄武湖</span><span class="route-arrow">→</span><span>南京博物院</span>
+                    <span class="route-distance">6.1 km</span>
+                    <span class="route-duration">约19分钟</span>
+                    <span class="route-fare">约¥20</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Day 3 行程 -->
+        <div class="day-section">
+            <div class="day-header">
+                <div class="day-title">
+                    <span class="day-badge d3">Day 3</span>
+                    <span>5月3日 · 秦淮风情线</span>
+                </div>
+                <span class="day-theme">🏮 城墙古韵与老街烟火</span>
+            </div>
+            <div class="spots-grid">
+                <div class="spot-card">
+                    <img class="spot-image" src="http://store.is.autonavi.com/showpic/d687af8d581468362bf8f5e2b234fd94" alt="南京雨花台风景区" onerror="this.style.background='linear-gradient(135deg,#ff00e5,#a855f7)';this.alt='雨花台'">
+                    <div class="spot-info">
+                        <span class="spot-number">1</span>
+                        <div class="spot-name">南京雨花台风景区</div>
+                        <div class="spot-address">📍 雨花路215号 · 雨花台区</div>
+                        <div class="spot-desc">烈士陵园与名胜古迹交融，雨花石产地，登雨花阁远眺，红色教育圣地。</div>
+                        <div class="spot-time">⏰ 建议游览 2小时</div>
+                        <a class="spot-map-link" href="https://uri.amap.com/marker?position=118.774576,31.996305&name=雨花台风景区&src=travelGuide" target="_blank">🗺️ 查看位置</a>
+                    </div>
+                </div>
+                <div class="spot-card">
+                    <img class="spot-image" src="http://store.is.autonavi.com/showpic/c6fc8d9abde53360671e66f795dd6408" alt="中华门" onerror="this.style.background='linear-gradient(135deg,#ff00e5,#a855f7)';this.alt='中华门'">
+                    <div class="spot-info">
+                        <span class="spot-number">2</span>
+                        <div class="spot-name">中华门城堡</div>
+                        <div class="spot-address">📍 中华路 · 秦淮区</div>
+                        <div class="spot-desc">中国现存最大城堡式瓮城，明城墙精华，登城眺望秦淮，藏兵洞世界罕见。</div>
+                        <div class="spot-time">⏰ 建议游览 1.5小时</div>
+                        <a class="spot-map-link" href="https://uri.amap.com/marker?position=118.781821,32.012800&name=中华门城堡&src=travelGuide" target="_blank">🗺️ 查看位置</a>
+                    </div>
+                </div>
+                <div class="spot-card">
+                    <img class="spot-image" src="http://store.is.autonavi.com/showpic/69e7ca3e4d0357955c61d1ec1682a587" alt="老门东" onerror="this.style.background='linear-gradient(135deg,#ff00e5,#a855f7)';this.alt='老门东'">
+                    <div class="spot-info">
+                        <span class="spot-number">3</span>
+                        <div class="spot-name">老门东</div>
+                        <div class="spot-address">📍 剪子巷54号 · 秦淮区</div>
+                        <div class="spot-desc">南京传统民居聚集地，三条营历史街区，非遗体验，地道金陵美食打卡。</div>
+                        <div class="spot-time">⏰ 建议游览 2小时</div>
+                        <a class="spot-map-link" href="https://uri.amap.com/marker?position=118.787645,32.011604&name=老门东&src=travelGuide" target="_blank">🗺️ 查看位置</a>
+                    </div>
+                </div>
+            </div>
+            <div class="taxi-routes">
+                <div class="taxi-title">🚕 打车路线规划（同日景点间）</div>
+                <div class="taxi-route">
+                    <span>雨花台</span><span class="route-arrow">→</span><span>中华门</span>
+                    <span class="route-distance">3.9 km</span>
+                    <span class="route-duration">约17分钟</span>
+                    <span class="route-fare">约¥13</span>
+                </div>
+                <div class="taxi-route">
+                    <span>中华门</span><span class="route-arrow">→</span><span>老门东</span>
+                    <span class="route-distance">1.6 km</span>
+                    <span class="route-duration">约19分钟</span>
+                    <span class="route-fare">约¥10</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 地图区域 -->
+        <div class="map-section">
+            <h2>🗺️ 高德地图 · 完整行程导航</h2>
+            <p class="map-desc">点击下方按钮在高德地图中查看3天完整行程路线与景点位置</p>
+            <a class="amap-button" href="amapuri://workInAmap/createWithToken?polymericId=mcp_99980734bd2646b1aebb83a9302de02f&from=MCP">📱 在高德地图中打开完整行程</a>
+            <a class="amap-button purple" href="https://uri.amap.com/marker?position=118.814,32.04&name=南京市中心&src=travelGuide" target="_blank">🌐 网页版地图查看</a>
+
+            <!-- SVG路线示意图 -->
+            <svg class="route-svg" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+                <!-- 背景网格 -->
+                <defs>
+                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+                    </pattern>
+                    <filter id="glow">
+                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                        <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                </defs>
+                <rect width="900" height="500" fill="url(#grid)"/>
+
+                <!-- 秦淮河示意 -->
+                <path d="M 50 350 Q 200 340 350 360 T 700 340 L 850 330" fill="none" stroke="rgba(0,240,255,0.1)" stroke-width="20" stroke-linecap="round"/>
+                <text x="100" y="345" fill="rgba(0,240,255,0.3)" font-size="13">秦淮河</text>
+
+                <!-- 紫金山示意 -->
+                <ellipse cx="700" cy="120" rx="120" ry="80" fill="rgba(168,85,247,0.08)" stroke="rgba(168,85,247,0.2)" stroke-width="1"/>
+                <text x="660" y="125" fill="rgba(168,85,247,0.4)" font-size="13">紫金山</text>
+
+                <!-- Day 1 路线 (青色) - 中山陵→明孝陵→夫子庙 -->
+                <polyline class="day1-line" points="730,100 680,130 280,300" fill="none" stroke-width="2.5" stroke-dasharray="8,4" filter="url(#glow)"/>
+                <circle class="day1-dot" cx="730" cy="100" r="8" filter="url(#glow)"/>
+                <circle class="day1-dot" cx="680" cy="130" r="8" filter="url(#glow)"/>
+                <circle class="day1-dot" cx="280" cy="300" r="8" filter="url(#glow)"/>
+                <text x="740" y="95" fill="#00f0ff" font-size="13" font-weight="bold">中山陵</text>
+                <text x="690" y="125" fill="#00f0ff" font-size="13" font-weight="bold">明孝陵</text>
+                <text x="220" y="295" fill="#00f0ff" font-size="13" font-weight="bold">夫子庙</text>
+
+                <!-- Day 2 路线 (紫色) - 总统府→玄武湖→南京博物院 -->
+                <polyline class="day2-line" points="420,220 520,140 620,200" fill="none" stroke-width="2.5" stroke-dasharray="8,4" filter="url(#glow)"/>
+                <circle class="day2-dot" cx="420" cy="220" r="8" filter="url(#glow)"/>
+                <circle class="day2-dot" cx="520" cy="140" r="8" filter="url(#glow)"/>
+                <circle class="day2-dot" cx="620" cy="200" r="8" filter="url(#glow)"/>
+                <text x="360" y="240" fill="#a855f7" font-size="13" font-weight="bold">总统府</text>
+                <text x="530" y="135" fill="#a855f7" font-size="13" font-weight="bold">玄武湖</text>
+                <text x="630" y="195" fill="#a855f7" font-size="13" font-weight="bold">南京博物院</text>
+
+                <!-- Day 3 路线 (粉色) - 雨花台→中华门→老门东 -->
+                <polyline class="day3-line" points="300,420 350,370 400,360" fill="none" stroke-width="2.5" stroke-dasharray="8,4" filter="url(#glow)"/>
+                <circle class="day3-dot" cx="300" cy="420" r="8" filter="url(#glow)"/>
+                <circle class="day3-dot" cx="350" cy="370" r="8" filter="url(#glow)"/>
+                <circle class="day3-dot" cx="400" cy="360" r="8" filter="url(#glow)"/>
+                <text x="250" y="440" fill="#ff00e5" font-size="13" font-weight="bold">雨花台</text>
+                <text x="320" y="365" fill="#ff00e5" font-size="13" font-weight="bold">中华门</text>
+                <text x="410" y="355" fill="#ff00e5" font-size="13" font-weight="bold">老门东</text>
+
+                <!-- 标题 -->
+                <text x="450" y="30" text-anchor="middle" fill="#e4e7ff" font-size="16" font-weight="bold">南京景点路线示意图</text>
+                <text x="450" y="485" text-anchor="middle" fill="#8b92b8" font-size="11">※ 示意图，实际位置以高德地图为准</text>
+            </svg>
+
+            <div class="map-legend">
+                <div class="legend-item"><span class="legend-dot d1"></span>Day1 钟山风光线</div>
+                <div class="legend-item"><span class="legend-dot d2"></span>Day2 人文历史线</div>
+                <div class="legend-item"><span class="legend-dot d3"></span>Day3 秦淮风情线</div>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <div class="footer">
+            <p>🚀 南京3天劳动节旅行攻略 | 数据来源：<span class="footer-highlight">高德地图 MCP</span></p>
+            <p>📅 2026.5.1-5.3 | 🚖 景点间打车出行 | 🌤️ 天气数据实时查询</p>
+        </div>
+    </div>
+</body>
+</html>
